@@ -3,6 +3,8 @@ import { startSvelteKitServer } from './server';
 import * as windowState from './windowState';
 import { getPort } from './util';
 import { join } from 'path';
+import waitOn from 'wait-on';
+
 import sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
 
@@ -16,7 +18,7 @@ const PORT = getPort();
 const isDev = !app.isPackaged;
 let mainWindow: BrowserWindow | null = null;
 
-const createWindow = (): BrowserWindow => {
+const createMainWidnow = (): void => {
   mainWindow = new BrowserWindow({
     ...windowState.getWindowParams(800, 600),
     show: false,
@@ -26,7 +28,9 @@ const createWindow = (): BrowserWindow => {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
-      preload: join(__dirname, './preload.js')
+      preload: join(__dirname, './preload.js'),
+      // Remove devtools in prod
+      devTools: isDev
     }
   });
 
@@ -48,13 +52,16 @@ const createWindow = (): BrowserWindow => {
     // For some reason doesn't work on arch
     // mainWindow.setAlwaysOnTop(true);
   }
-
-  return mainWindow;
 };
 
 app.on('ready', async () => {
   if (!isDev) await startSvelteKitServer(PORT);
-  createWindow();
+  const server = `http-get://localhost:29890`;
+  // const server = 'https://youtube.com';
+  // await waitOn({ resources: [server] }, () => 0);
+  await waitOn({ resources: [server], verbose: true }, () => null);
+  console.log('Local server has started, running window creation');
+  createMainWidnow();
 });
 
 app.on('window-all-closed', () => {
@@ -65,6 +72,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0 || mainWindow === null) {
-    createWindow();
+    createMainWidnow();
   }
 });
