@@ -5,9 +5,6 @@ import { getPort } from './util';
 import { join } from 'path';
 import waitOn from 'wait-on';
 
-import sourceMapSupport from 'source-map-support';
-sourceMapSupport.install();
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require

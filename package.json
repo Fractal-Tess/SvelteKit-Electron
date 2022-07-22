@@ -43,8 +43,8 @@
     "@fontsource/fira-code": "^4.5.10",
     "@fontsource/fira-mono": "^4.5.8",
     "@fontsource/fira-sans": "^4.5.8",
-    "@sveltejs/adapter-node": "^1.0.0-next.82",
-    "@sveltejs/kit": "^1.0.0-next.386",
+    "@sveltejs/adapter-node": "^1.0.0-next.83",
+    "@sveltejs/kit": "^1.0.0-next.391",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.4",
     "@types/polka": "^0.5.4",
@@ -59,7 +59,7 @@
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
     "daisyui": "^2.19.1",
-    "electron": "^19.0.8",
+    "electron": "^19.0.9",
     "esbuild": "^0.14.49",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
@@ -72,7 +72,7 @@
     "postcss-load-config": "^4.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.7.0",
-    "sass": "^1.53.0",
+    "sass": "^1.54.0",
     "serve-static": "^1.15.0",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
@@ -88,7 +88,6 @@
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.2",
     "polka": "^0.5.2",
-    "serve-static": "^1.15.0",
-    "source-map-support": "^0.5.21"
+    "serve-static": "^1.15.0"
   }
 }
