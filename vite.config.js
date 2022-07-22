@@ -19,7 +19,11 @@ const config = {
       $src: path.resolve('./src/')
     }
   },
-  server: { port: process.env.PORT || 29890 }
+  server: {
+    port: process.env.PORT || 29890,
+    host: '127.0.0.1',
+    strictPort: true
+  }
 };
 
 export default config;
