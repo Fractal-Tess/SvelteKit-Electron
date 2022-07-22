@@ -6,7 +6,7 @@
   </a>
 
   <a
-    href="https://github.com/Fractal-Tess/Svelte-Kit-Tauri-Template"
+    href="https://github.com/Fractal-Tess/SvelteKit-Electron"
     class="border-b-2 border-secondary">GitHub</a
   >
 </div>
