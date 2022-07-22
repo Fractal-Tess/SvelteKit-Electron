@@ -56,11 +56,7 @@ const createMainWidnow = (): void => {
 
 app.on('ready', async () => {
   if (!isDev) await startSvelteKitServer(PORT);
-  const server = `http-get://localhost:29890`;
-  // const server = 'https://youtube.com';
-  // await waitOn({ resources: [server] }, () => 0);
-  await waitOn({ resources: [server], verbose: true }, () => null);
-  console.log('Local server has started, running window creation');
+  await waitOn({ resources: [`http://localhost:${PORT}`] });
   createMainWidnow();
 });
 
