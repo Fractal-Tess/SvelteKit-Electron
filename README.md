@@ -4,7 +4,6 @@
 
 <div align="center">
 <br />
-![window screenshot](/static/app.jpg)
 <img alt="Electron Svelte Crossover Banner" src="https://raw.githubusercontent.com/Fractal-Tess/SvelteKit-Electron/main/static/app.jpg" width="580" />
 </div>
 <br />
