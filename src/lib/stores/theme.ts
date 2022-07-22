@@ -9,7 +9,6 @@ const createThemeStore = () => {
   const { subscribe, update } = writable(api.theme.get());
 
   subscribe(theme => {
-    console.log('New theme is: ', theme);
     api.theme.set(theme);
   });
 
