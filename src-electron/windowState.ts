@@ -8,18 +8,18 @@ import { store } from './store';
  */
 export const manageWindow = (window: BrowserWindow) => {
   window.on('resize', () => {
-    const t_size = window.getSize();
+    const [width, height] = window.getSize();
     const size: Size = {
-      height: t_size[1],
-      width: t_size[0]
+      height,
+      width
     };
     store.set('win-size', size);
   });
   window.on('move', () => {
-    const t_pos = window.getPosition();
+    const [x, y] = window.getPosition();
     const pos: Position = {
-      x: t_pos[0],
-      y: t_pos[1]
+      x,
+      y
     };
     store.set('win-pos', pos);
   });
