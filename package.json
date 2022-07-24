@@ -14,7 +14,7 @@
     "svelte:dev": "vite dev",
     "svelte:build": "vite build && node scripts/convert_handler.js",
     "..": "..",
-    "electron:dev": "concurrently --handle-input -n=TSC,Nodemon -c='#3178c6','#76d04B' yarn:electron:transpile:watch \"yarn nodemon\"",
+    "electron:dev": "concurrently --handle-input -n=TSC,Nodemon -c='#3178c6','#76d04b' yarn:electron:transpile:watch \"yarn nodemon\"",
     "electron:transpile": "tsc -p src-electron/tsconfig.json && node scripts/add_package_json.js",
     "electron:transpile:watch": "tsc -w -p src-electron/tsconfig.json --preserveWatchOutput",
     "...": "...",
