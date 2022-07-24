@@ -5,6 +5,15 @@ import { getPort } from './util';
 import { join } from 'path';
 import waitOn from 'wait-on';
 
+/**
+ * Prevent multiple instances
+ */
+const isSingleInstance = app.requestSingleInstanceLock();
+if (!isSingleInstance) {
+  app.quit();
+  process.exit(0);
+}
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require
