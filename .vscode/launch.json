@@ -9,6 +9,18 @@
   ],
   "configurations": [
     {
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "name": "nodemon",
+      "program": "scripts/build_sveltekit.js",
+      "request": "launch",
+      "restart": true,
+      "runtimeExecutable": "node",
+      "args": ["build"],
+
+      "type": "node"
+    },
+    {
       "name": "Renderer",
       "port": 9222,
       "request": "attach",

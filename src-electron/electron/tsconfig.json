@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "inlineSources": true,
+    "sourceRoot": "/",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "target": "esnext",
+    "sourceMap": false,
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
+    "types": ["node"],
+
+    "paths": {
+      "*": ["../../node_modules/*"]
+    },
+    "outDir": "../../build/electron"
+  },
+  "include": ["**/*.ts", "../../types/env.d.ts", "../preload/src/preload.ts"]
+}

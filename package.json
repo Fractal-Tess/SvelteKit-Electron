@@ -3,16 +3,16 @@
   "productName": "Template",
   "version": "0.0.1",
   "description": "This is a starter SvelteKit-Electron-Typescript-Tailwindcss-Daisyui Template configured with the node-adapter",
-  "main": "build/index.js",
+  "main": "build/electron/index.cjs",
   "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=dev PORT=29890 yarn dev",
-    "dev": "concurrently --handle-input -n=SvelteKit,Electron -c='#ff3e00','#9ff9f8' yarn:svelte:dev yarn:electron:dev",
+    "dev": "node scripts/dev/watcher.js",
     "build": "node scripts/clear_build_dir.js && yarn build:all",
     "build:all": "concurrently -n=SvelteKit,TSC -c='#ff3e00','#3178c6' yarn:svelte:build yarn:electron:transpile",
     ".": ".",
     "svelte:dev": "vite dev",
-    "svelte:build": "vite build && node scripts/convert_handler.js",
+    "svelte:build": "node scripts/svelte/build.js && node scripts/svelte/convert.js",
     "..": "..",
     "electron:dev": "concurrently --handle-input -n=TSC,Nodemon -c='#3178c6','#76d04b' yarn:electron:transpile:watch \"yarn nodemon\"",
     "electron:transpile": "tsc -p src-electron/tsconfig.json && node scripts/add_package_json.js",
@@ -83,9 +83,11 @@
     "vite": "^3.0.2"
   },
   "dependencies": {
+    "electron-devtools-installer": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.0.2",
+    "electron-updater": "^5.0.5",
     "polka": "^0.5.2",
     "serve-static": "^1.15.0",
     "wait-on": "^6.0.1"

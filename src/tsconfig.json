@@ -26,9 +26,9 @@
     "sourceMap": true,
     "strict": true,
     "paths": {
-      "$lib/*": ["./lib/*"],
-      "$styles/*": ["./styles/*"],
-      "$types": ["./types.ts"]
+      "$lib/*": ["lib/*"],
+      "$styles/*": ["styles/*"],
+      "$types": ["types.ts"]
     }
   }
 }

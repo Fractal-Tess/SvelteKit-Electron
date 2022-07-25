@@ -1,6 +1,6 @@
 import type { BrowserWindow } from 'electron';
-import type { Position, Size } from './types.js';
-import { store } from './store';
+import type { Position, Size } from '../types';
+import { store } from '../store/store';
 
 /**
  * Saves the window's size and position
@@ -9,19 +9,11 @@ import { store } from './store';
 export const manageWindow = (window: BrowserWindow) => {
   window.on('resize', () => {
     const [width, height] = window.getSize();
-    const size: Size = {
-      height,
-      width
-    };
-    store.set('win-size', size);
+    store.set('win-size', { height, width } as Size);
   });
   window.on('move', () => {
     const [x, y] = window.getPosition();
-    const pos: Position = {
-      x,
-      y
-    };
-    store.set('win-pos', pos);
+    store.set('win-pos', { x, y } as Position);
   });
 };
 

@@ -1,5 +1,5 @@
 /// <reference types="@sveltejs/kit" />
-import { API } from '../src-electron/preload';
+import { API } from '../src-electron/preload/src/index';
 
 declare namespace App {
   // interface Locals {}

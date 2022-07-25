@@ -10,8 +10,7 @@ const config = {
       postcss: true,
 
       scss: {
-        prependData: '@use "src/styles/variables.scss" as *;',
-        stripIndent: true
+        prependData: '@use "src/styles/variables.scss" as *;'
       }
     })
   ],

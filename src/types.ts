@@ -1,1 +1,1 @@
-export type { Theme } from '../src-electron/types';
+export type { Theme } from '../src-electron/preload/src/types';

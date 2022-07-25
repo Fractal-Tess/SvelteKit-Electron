@@ -14,4 +14,4 @@ export type Position = {
   y: number;
 };
 
-export type Theme = 'dark' | 'light';
+export type Theme = 'light' | 'dark';
