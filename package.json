@@ -12,7 +12,8 @@
     "make": "yarn build && electron-forge make",
     "publish": "yarn build && electron-forge publish",
     "lint": "eslint --ext .ts,.js,.svelte .",
-    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template"
+    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 npx --no-install electron ./scripts/update-electron-vendors.js "
   },
   "keywords": [],
   "author": {
@@ -40,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "autoprefixer": "^10.4.7",
+    "cross-env": "^7.0.3",
     "daisyui": "^2.20.0",
     "electron": "^19.0.10",
     "esbuild": "^0.14.51",
