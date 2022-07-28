@@ -11,9 +11,8 @@
     "package": "yarn build && electron-forge package",
     "make": "yarn build && electron-forge make",
     "publish": "yarn build && electron-forge publish",
-    "lint": "eslint --ext .ts .",
-    "....": "Todo: make a sophisticated test suit",
-    "test": "yarn package && out/Template-linux-x64/Template"
+    "lint": "eslint --ext .ts,.js,.svelte .",
+    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template"
   },
   "keywords": [],
   "author": {
