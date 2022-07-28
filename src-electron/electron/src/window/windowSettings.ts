@@ -1,6 +1,6 @@
 import type { BrowserWindow } from 'electron';
 import type { Position, Size } from '../types';
-import { store } from '../store/store';
+import { store } from '../store';
 
 /**
  * Saves the window's size and position

@@ -26,7 +26,7 @@ const config = {
       }
     },
     emptyOutDir: true,
-    reportCompressedSize: true
+    reportCompressedSize: false
   }
 };
 

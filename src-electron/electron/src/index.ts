@@ -1,49 +1,57 @@
-import { app, BrowserWindow } from 'electron';
-import logger from './logger/logger';
-import { startSvelteKitServer } from './sk-server/server';
+import { app } from 'electron';
 import { restoreOrCreateWindow } from './window/mainWindow';
+import { logger } from './logger';
+import { update } from './update';
+import { startSvelteKitServer } from './sk-server';
+import { applySecurityRestrictions } from './security';
 
-export const getPort = () => {
-  const port = process.env.PORT;
-  if (!port) return 29890;
-  return +port;
-};
-const isDev = import.meta.env.DEV;
-
-/** Handle creating/removing shortcuts on Windows when installing/uninstalling. */
+/**
+ * Handle creating/removing shortcuts on Windows when installing/uninstalling.
+ */
 if (require('electron-squirrel-startup')) {
   // eslint-disable-line global-require
   app.quit();
 }
 
-/** Prevent multiple instances of the application. */
-const isSingleInstance = app.requestSingleInstanceLock();
-if (!isSingleInstance) app.quit();
+(async () => {
+  if (import.meta.env.PROD) {
+    await update();
+    await startSvelteKitServer();
+  }
+})();
 
-/** Disable Hardware Acceleration for more power-save. */
+/**
+ * Apply security restriction
+ */
+applySecurityRestrictions();
+
+/**
+ * Prevent electron from running multiple instances.
+ */
+if (!app.requestSingleInstanceLock()) app.quit();
+
+/**
+ * Disable Hardware Acceleration to save more system resources.
+ */
 // app.disableHardwareAcceleration();
 
-/** Shut down the process if all windows are closed. */
+/**
+ * Shout down background process if all windows was closed
+ */
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
-/** Initialize and start the application window.*/
-app.on('activate', restoreOrCreateWindow);
-
-/** Create app window when background process will be ready. */
-app.once('ready', async () => {
-  if (!isDev) {
-    startSvelteKitServer();
-  }
-  restoreOrCreateWindow();
+app.on('quit', () => {
+  import.meta.env.DEV && logger.info('The application was closed');
 });
 
-/** Check for new app versions in production mode only. */
-// if (import.meta.env.PROD) {
-//   app
-//     .whenReady()
-//     .then(() => import('electron-updater'))
-//     .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
-//     .catch(e => logger.error('Failed check updates:', e));
-// }
+/**
+ * macOs specific event for starting the application
+ */
+app.on('activate', restoreOrCreateWindow);
+
+/**
+ * Create the application window when the background process is ready.
+ */
+app.once('ready', restoreOrCreateWindow);

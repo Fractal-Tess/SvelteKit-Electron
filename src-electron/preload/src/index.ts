@@ -1,13 +1,13 @@
 import { contextBridge } from 'electron';
-import { Theme } from './types';
-import { store } from '../../electron/src/store/store';
+import { type Theme } from './types';
 import { type BinaryLike, createHash } from 'crypto';
+import { store } from '../../electron/src/store';
 
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
-
+/**
+ * The properties of the API object will be exposed to the renderer process.
+ * Inside of the renderer, you are able to call/access these properties by using the global api object.
+ */
 export const API = {
-  // Example
   example: () => 'Hello from Electron',
   versions: {
     node: () => process.versions.node,
@@ -20,7 +20,10 @@ export const API = {
     set: (theme: Theme) => store.set('theme', theme)
   },
   sha256sum: (data: BinaryLike) =>
-    createHash('sha256').update(data).digest('hex')
+    createHash('sha256').update(data).digest('hex'),
+  getEnv: () => {
+    return import.meta.env;
+  }
 };
 
 contextBridge.exposeInMainWorld('api', API);

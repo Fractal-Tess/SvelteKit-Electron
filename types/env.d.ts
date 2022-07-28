@@ -9,11 +9,9 @@
  * @see https://github.com/vitejs/vite/blob/cab55b32de62e0de7d7789e8c2a1f04a8eae3a3f/packages/vite/types/importMeta.d.ts#L62-L69 Base Interface
  * @see https://vitejs.dev/guide/env-and-mode.html#env-files Vite Env Variables Doc
  */
+
 interface ImportMetaEnv {
-  readonly VITE_DEV_SERVER_URL: undefined | string;
-  readonly SVELTEKIT_SERVER_PORT: string;
-  readonly SVELTEKIT_SERVER_HOST: string;
-  readonly SVELTEKIT_SERVER_URL: string;
+  readonly VITE_DEV_SERVER_URL: string;
 }
 
 interface ImportMeta {

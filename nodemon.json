@@ -1,5 +1,0 @@
-{
-  "watch": ["build/"],
-  "ext": ".*",
-  "exec": "electron-forge start"
-}

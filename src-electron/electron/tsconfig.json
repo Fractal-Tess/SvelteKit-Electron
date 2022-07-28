@@ -15,11 +15,9 @@
     "strict": true,
     "isolatedModules": true,
     "types": ["node"],
-
     "paths": {
       "*": ["../../node_modules/*"]
-    },
-    "outDir": "../../build/electron"
+    }
   },
-  "include": ["**/*.ts", "../../types/env.d.ts", "../preload/src/preload.ts"]
+  "include": ["**/*.ts", "../../types/env.d.ts"]
 }

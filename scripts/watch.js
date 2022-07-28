@@ -2,26 +2,20 @@
 
 import { createServer, build, createLogger } from 'vite';
 import electronPath from 'electron';
-import { spawn } from 'child_process';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-process.chdir(join(__dirname, '../../'));
+import { spawn } from 'node:child_process';
+import { copyFileSync, existsSync, mkdirSync } from 'node:fs';
 
 const mode = process.env.MODE || 'development';
 
 /** @type {import('vite').LogLevel} */
 const logLevel = 'info';
 
-/** @param {import('vite').ViteDevServer} watchServer Renderer watch server instance. */
+/** @param {import('vite').ViteDevServer} watchServer */
 const setupElectronWatcher = ({ resolvedUrls }) => {
   process.env.VITE_DEV_SERVER_URL = resolvedUrls.local[0];
 
   const logger = createLogger(logLevel, {
-    prefix: '[Electron]'
+    prefix: '[Electron]:'
   });
 
   let electronProcess = null;
@@ -30,40 +24,65 @@ const setupElectronWatcher = ({ resolvedUrls }) => {
     mode,
     logLevel,
     build: {
+      /**
+       * Watch the directory where the config file is located for any source code changes.
+       * Whenever there is a change, the writeBundle function will be invoked,
+       * the current electron process will be terminated and a new one will be spawned.
+       */
       watch: {}
     },
     configFile: 'src-electron/electron/vite.config.js',
     plugins: [
       {
         name: 'reload-electron-on-change',
+
         writeBundle() {
+          /**
+           * Create the directory and copy over any files required for the background electron process.
+           */
+          if (!existsSync('build/assets'))
+            mkdirSync('build/assets', { recursive: true });
+
+          copyFileSync(
+            'src-electron/electron/assets/icons/app-icon.png',
+            'build/assets/app-icon.png'
+          );
+
+          /**
+           * Kill lingering electron process
+           */
           if (electronProcess) {
             electronProcess.off('exit', process.exit);
             electronProcess.kill('SIGINT');
             electronProcess = null;
           }
 
+          /**
+           * Start electron dev via the `electron .` command
+           */
           electronProcess = spawn(String(electronPath), ['.']);
 
+          /**
+           * Proxy stdout and stderr to the console
+           */
           electronProcess.stdout.on('data', msg =>
             logger.info(msg.toString().trim(), { timestamp: true })
           );
-
           electronProcess.stderr.on('data', msg =>
             logger.error(msg.toString().trim(), { timestamp: true })
           );
 
-          electronProcess.on('exit', () => {
-            logger.info('The application has been closed => Stopping watcher');
-            process.exit(0);
-          });
+          /**
+           * When the application has been closed, exit out of the watcher script
+           */
+          electronProcess.on('exit', process.exit);
         }
       }
     ]
   });
 };
 
-/** @param {import('vite').ViteDevServer} watchServer Renderer watch server instance. */
+/** @param {import('vite').ViteDevServer} watchServer */
 const setupPreloadWatcher = ({ ws }) => {
   return build({
     mode,

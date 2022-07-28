@@ -1,12 +1,13 @@
 import { chrome } from '../../.electron-vendors.cache.json';
+import { join } from 'node:path';
 
-const PACKAGE_ROOT = __dirname;
+console.log(__dirname);
 
 /** @type {import('vite').UserConfig} */
 const config = {
   mode: process.env.MODE,
-  root: PACKAGE_ROOT,
-  envDir: process.cwd(),
+  root: __dirname,
+  envDir: join(__dirname, '../../'),
   build: {
     ssr: true,
     sourcemap: 'inline',
@@ -24,7 +25,7 @@ const config = {
       }
     },
     emptyOutDir: true,
-    reportCompressedSize: true
+    reportCompressedSize: false
   }
 };
 

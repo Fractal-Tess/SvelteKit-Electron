@@ -9,10 +9,7 @@ const config = {
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "${join(
-          __dirname,
-          '/src/styles/variables.scss'
-        )}" as *;`
+        additionalData: `@use "src/styles/variables.scss" as *;`
       }
     }
   },
@@ -21,6 +18,9 @@ const config = {
     alias: {
       $styles: join(__dirname, 'src/styles')
     }
+  },
+  build: {
+    reportCompressedSize: false
   },
   server: {
     port: +(process.env.PORT || 3000),
