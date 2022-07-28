@@ -6,6 +6,11 @@
   import { fade } from 'svelte/transition';
 
   let message = '';
+  let hashInput = 'Hello world';
+  let hashOutput: string;
+  $: {
+    hashOutput = api.sha256sum(hashInput);
+  }
 
   const callElectron = () => {
     message = api.example();
@@ -26,7 +31,7 @@
     class=" font-extrabold btn btn-outline btn-secondary btn-md"
     >Call Electron</button
   >
-  <div class="relative my-4">
+  <div class="relative">
     {#key message}
       <p
         class="absolute outline-secondary border-b-2 border-secondary text-2xl
@@ -39,15 +44,21 @@
     {/key}
   </div>
 
+  <span class="text-center -mb-4 text-md">{hashOutput}</span>
+  <div class="form-control">
+    <label class="input-group">
+      <span>Hash string</span>
+      <input
+        bind:value={hashInput}
+        type="text"
+        class="input input-bordered input-secondary focus:ring-secondary focus:border-secondary focus:outline-none"
+      />
+    </label>
+  </div>
+
   <ul class="grid grid-cols-2 grid- ">
     {#each versions as [key, val]}
       <li class="mx-14">{key} - {val}</li>
     {/each}
   </ul>
-
-  <style scoped>
-    ul {
-      list-style: none;
-    }
-  </style>
 </div>

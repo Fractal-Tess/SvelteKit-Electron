@@ -1,7 +1,7 @@
 <script lang="ts">
   import '$styles/app.scss';
 
-  import { fly } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
   import Header from '$lib/header/Header.svelte';
@@ -21,13 +21,12 @@
   // const externalUrlQueryModal = false;
 </script>
 
-<div class="bg-base-100 text-base-content h-screen  flex flex-col">
+<div
+  class="bg-base-100 text-base-content h-screen flex flex-col overflow-y-auto overflow-x-hidden"
+>
   <Header />
   {#if ready}
-    <main
-      class="flex-1 shadow-lg"
-      in:fly={{ delay: 300, opacity: 0, duration: 1000, y: 100 }}
-    >
+    <main class="flex-1 shadow-lg" in:fade={{ delay: 300, duration: 1000 }}>
       <slot />
     </main>
     <!-- {#if externalUrlQueryModal}
