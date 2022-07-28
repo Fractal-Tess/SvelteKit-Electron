@@ -37,15 +37,9 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.4",
     "@types/polka": "^0.5.4",
-    "@types/source-map-support": "^0.5.4",
-    "@types/wait-on": "^5.3.1",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "autoprefixer": "^10.4.7",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "concurrently": "^7.3.0",
     "daisyui": "^2.20.0",
     "electron": "^19.0.10",
     "esbuild": "^0.14.51",
@@ -60,7 +54,6 @@
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.7.0",
     "sass": "^1.54.0",
-    "serve-static": "^1.15.0",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
     "svelte-preprocess": "^4.10.7",
@@ -76,7 +69,6 @@
     "electron-store": "^8.0.2",
     "electron-updater": "^5.0.5",
     "polka": "^0.5.2",
-    "serve-static": "^1.15.0",
-    "wait-on": "^6.0.1"
+    "serve-static": "^1.15.0"
   }
 }
