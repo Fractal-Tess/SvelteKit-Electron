@@ -1,4 +1,4 @@
-import { contextBridge } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 import { type Theme } from './types';
 import { type BinaryLike, createHash } from 'crypto';
 import { store } from '../../electron/src/store';
@@ -21,9 +21,7 @@ export const API = {
   },
   sha256sum: (data: BinaryLike) =>
     createHash('sha256').update(data).digest('hex'),
-  getEnv: () => {
-    return import.meta.env;
-  }
+  minimize: () => ipcRenderer.send('minimize')
 };
 
 contextBridge.exposeInMainWorld('api', API);

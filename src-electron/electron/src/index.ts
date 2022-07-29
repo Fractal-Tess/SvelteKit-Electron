@@ -4,6 +4,7 @@ import { logger } from './logger';
 import { update } from './update';
 import { startSvelteKitServer } from './sk-server';
 import { applySecurityRestrictions } from './security';
+import { registerIPC } from './ipc';
 
 /**
  * Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -24,6 +25,10 @@ if (require('electron-squirrel-startup')) {
  * Apply security restriction
  */
 applySecurityRestrictions();
+/**
+ * Register all ipc listeners
+ */
+registerIPC();
 
 /**
  * Prevent electron from running multiple instances.

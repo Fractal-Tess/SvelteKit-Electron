@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/watch.js",
+    "dev": "node scripts/watch.js",
     "build": "node scripts/build.js && node scripts/convert_handler.js",
     "package": "yarn build && electron-forge package",
     "make": "yarn build && electron-forge make",
@@ -65,6 +66,7 @@
     "vite": "^3.0.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.2",
     "electron-devtools-installer": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",

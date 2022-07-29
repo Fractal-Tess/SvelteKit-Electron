@@ -1,11 +1,11 @@
 <script lang="ts">
   import '$styles/app.scss';
-
+  import '@fortawesome/fontawesome-free/js/all.js';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
-  import Header from '$lib/header/Header.svelte';
-  import Footer from '$lib/footer/Footer.svelte';
+  import Header from '$lib/example/header/Header.svelte';
+  import Footer from '$lib/example/footer/Footer.svelte';
   // import ConfirmOpenLink from '$lib/modal/ConfirmOpenLinkModal.svelte';
 
   import { theme } from '$lib/stores/theme';
