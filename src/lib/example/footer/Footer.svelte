@@ -1,4 +1,3 @@
-<!-- Make she the bottom rounded value of fixed elements is the same as  html/body in the app.scss file  -->
 <div
   class="fixed bottom-0 w-full rounded-b-3xl h-12 items-center flex justify-around bg-base-300"
 >
