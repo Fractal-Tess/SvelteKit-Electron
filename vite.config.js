@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import { sveltekit } from '@sveltejs/kit/vite';
 import { join } from 'node:path';
 
