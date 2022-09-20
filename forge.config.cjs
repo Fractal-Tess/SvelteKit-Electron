@@ -5,7 +5,7 @@ module.exports = {
     {
       name: '@electron-forge/maker-rpm',
       config: {
-        name: 'ff'
+        name: 'sveltekit-electron'
       }
     }
   ]
