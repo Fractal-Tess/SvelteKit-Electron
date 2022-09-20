@@ -4,7 +4,7 @@
 
 <div align="center">
 <br />
-<img alt="Electron Svelte Crossover Banner" src="https://raw.githubusercontent.com/Fractal-Tess/SvelteKit-Electron/main/static/app.jpg" width="580" />
+<img alt="Electron Svelte Crossover Banner" src="https://raw.githubusercontent.com/Fractal-Tess/SvelteKit-Electron/main/static/app.png" width="580" />
 </div>
 <br />
 <br />
@@ -38,3 +38,9 @@ The aim of this project is to provide Web Developers using `svelte` the power to
 **[`tailwindcss`](https://github.com/tailwindlabs/tailwindcss)** > Tailwind CSS is basically a utility-first CSS framework for rapidly building custom user interfaces. It is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override
 
 **[`daisyUI`](https://github.com/saadeghi/daisyui)** > A plugin for Tailwind CSS. Faster development. Cleaner HTML. Customizable and themeable. Pure CSS.
+
+### TODO: Upgrade Svelte-Kit
+
+Currently unable to upgrade SvelteKit due to breakage of AJV
+
+Project is currently not maintained
