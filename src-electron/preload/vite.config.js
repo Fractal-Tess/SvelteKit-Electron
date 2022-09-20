@@ -1,8 +1,6 @@
 import { chrome } from '../../.electron-vendors.cache.json';
 import { join } from 'node:path';
 
-console.log(__dirname);
-
 /** @type {import('vite').UserConfig} */
 const config = {
   mode: process.env.MODE,
