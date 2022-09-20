@@ -5,13 +5,6 @@ import { join } from 'node:path';
 
 const config = {
   plugins: [sveltekit()],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "src/styles/variables.scss" as *;`
-      }
-    }
-  },
 
   resolve: {
     alias: {

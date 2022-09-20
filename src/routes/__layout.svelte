@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '$styles/app.scss';
+  import '$styles/app.postcss';
   import '@fortawesome/fontawesome-free/js/all.js';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
