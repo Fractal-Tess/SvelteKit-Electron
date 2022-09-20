@@ -1,14 +1,81 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
-.env
-.env.*
-!.env.example
-/out
+# v 0.2
+# Minified files 
+*.min.*
+*.min.*
 
-# Ignore files for PNPM, NPM and YARN
+# Husky
+.husky/*
+
+# Git
+.gitignore
+
+# Eslint
+.eslintignore 
+
+# Prettier
+.prettierignore
+
+# Pnpm
 pnpm-lock.yaml
-package-lock.json
-yarn.lock
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+## Build files
+
+# Common
+build
+release
+dist
+
+# Rust
+target
+
+# Svelte-Kit
+.svelte-kit
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Docusaurus cache and generated files
+.docusaurus
+
+
+# Nodejs packages
+node_modules/
+
+# Package Managers
+
+.npm
+# Yarn
+.yarn-integrity
+
+# Output of 'npm pack'
+*.tgz
+
+# Serverless directories
+.serverless/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*

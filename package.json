@@ -1,29 +1,38 @@
 {
-  "name": "svelte-kit-electron-template",
-  "productName": "Template",
+  "name": "sveltekit-electron",
   "version": "0.0.1",
-  "description": "A Svelte-Kit Electron template",
-  "main": "build/electron/index.cjs",
-  "type": "module",
-  "scripts": {
-    "start": "node scripts/watch.js",
-    "dev": "node scripts/watch.js",
-    "build": "node scripts/build.js && node scripts/convert_handler.js",
-    "package": "yarn build && electron-forge package",
-    "make": "yarn build && electron-forge make",
-    "publish": "yarn build && electron-forge publish",
-    "lint": "eslint --ext .ts,.js,.svelte .",
-    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template",
-    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 npx --no-install electron ./scripts/update-electron-vendors.js "
-  },
   "keywords": [],
+  "license": "MIT",
   "author": {
     "name": "Fractal-Tess",
     "email": "vgfractal@gmail.com"
   },
-  "license": "MIT",
+  "type": "module",
+  "main": "build/electron/index.cjs",
+  "scripts": {
+    "build": "node scripts/build.js && node scripts/convert_handler.js",
+    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template",
+    "dev": "node scripts/watch.js",
+    "format": "prettier --write .",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 npx --no-install electron ./scripts/update-electron-vendors.js ",
+    "lint": "eslint .",
+    "make": "yarn build && electron-forge make",
+    "package": "yarn build && electron-forge package",
+    "publish": "yarn build && electron-forge publish",
+    "start": "node scripts/watch.js"
+  },
   "config": {
     "forge": "./forge.config.cjs"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.2",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-log": "^4.4.8",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.2",
+    "electron-updater": "^5.0.5",
+    "polka": "^0.5.2",
+    "serve-static": "^1.15.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.65",
@@ -50,13 +59,12 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "node-sass": "^7.0.1",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "polka": "^0.5.2",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-svelte": "^2.7.0",
-    "sass": "^1.54.0",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
     "svelte-preprocess": "^4.10.7",
@@ -64,15 +72,5 @@
     "tslib": "^2.4.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.4"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.1.2",
-    "electron-devtools-installer": "^3.2.0",
-    "electron-log": "^4.4.8",
-    "electron-squirrel-startup": "^1.0.0",
-    "electron-store": "^8.0.2",
-    "electron-updater": "^5.0.5",
-    "polka": "^0.5.2",
-    "serve-static": "^1.15.0"
   }
 }
