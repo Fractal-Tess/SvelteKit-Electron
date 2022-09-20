@@ -17,7 +17,8 @@ module.exports = {
         args: 'after-used',
         argsIgnorePattern: '^_'
       }
-    ]
+    ],
+    'no-undef': ['warn']
   },
   plugins: ['svelte3', '@typescript-eslint', 'unused-imports'],
   ignorePatterns: ['*.cjs'],
