@@ -8,7 +8,7 @@
   <h1 class="text-4xl mt-16">Welcome</h1>
   <h2 class="text-xl">
     This is a <span class="bg-primary text-primary-content rounded-md p-1"
-      >SvelteKit Electron Typescript Tailwind</span
+      >SvelteKit Electron</span
     > Template
   </h2>
 
