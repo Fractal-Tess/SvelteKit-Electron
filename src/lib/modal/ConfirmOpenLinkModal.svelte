@@ -11,7 +11,7 @@
   class="flex justify-center items-center h-full w-full absolute dev backdrop-blur-sm"
 >
   <div
-    class="flex flex-col gap-4 justify-between rounded-2xl w-72 h-32 bg-secondary text-secondary-content text-2xl font-bold p-2"
+    class="flex flex-col gap-4 justify-between rounded-2xl w-72 h-32 bg-primary text-primary-content text-2xl font-bold p-2"
   >
     <p class="mx-auto">{msg}</p>
     <div class="uppercase flex justify-center gap-4 ">

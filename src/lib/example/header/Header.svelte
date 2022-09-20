@@ -10,7 +10,7 @@
     on:click={() => {
       theme.toggleTheme();
     }}
-    class="hover:text-secondary ml-2 z-10"
+    class="hover:text-primary ml-2 z-10"
     aria-live="polite"
   >
     <ThemeToggleIcon cssClass={'w-8'} />
@@ -20,14 +20,14 @@
     <button
       on:click={api.minimize}
       aria-live="polite"
-      class="p-2 text-xl hover:text-secondary z-10 h-full"
+      class="p-2 text-xl hover:text-primary z-10 h-full"
     >
       <i class="fa-solid fa-window-minimize w-6" />
     </button>
     <button
       on:click={window.close}
       aria-live="polite"
-      class="p-2 text-2xl hover:text-secondary z-10 h-full"
+      class="p-2 text-2xl hover:text-primary z-10 h-full"
     >
       <i class="fa-solid fa-xmark w-6" />
     </button>

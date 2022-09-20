@@ -13,7 +13,7 @@
     <input
       bind:value={hashInput}
       type="text"
-      class="input input-bordered input-secondary focus:ring-secondary focus:border-secondary focus:outline-none"
+      class="input input-bordered input-primary focus:ring-primary focus:border-primary focus:outline-none"
     />
   </label>
 </div>
