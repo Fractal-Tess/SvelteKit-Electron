@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<style lang="scss">
+<style lang="postcss">
   .dragzone {
     -webkit-app-region: drag;
   }
