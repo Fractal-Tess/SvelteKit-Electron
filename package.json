@@ -11,18 +11,23 @@
   "main": "build/electron/index.cjs",
   "scripts": {
     "build": "node scripts/build.js && node scripts/convert_handler.js",
-    "check:if:it:runs": "yarn package && out/Template-linux-x64/Template",
+    "check:if:it:runs": "pnpm:package && out/Template-linux-x64/Template",
     "dev": "node scripts/watch.js",
     "format": "prettier --write .",
-    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 npx --no-install electron ./scripts/update-electron-vendors.js ",
+    "postinstall": "cross-env ELECTRON_RUN_AS_NODE=1 npx --no-install electron ./scripts/update-electron-vendors.js && husky install",
     "lint": "eslint .",
-    "make": "yarn build && electron-forge make",
-    "package": "yarn build && electron-forge package",
-    "publish": "yarn build && electron-forge publish",
-    "start": "node scripts/watch.js"
+    "make": "pnpm:build && electron-forge make",
+    "package": "pnpm:build && electron-forge package",
+    "publish": "pnpm:build && electron-forge publish"
   },
   "config": {
     "forge": "./forge.config.cjs"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write",
+      "eslint"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.2",
@@ -60,6 +65,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "polka": "^0.5.2",
     "postcss": "^8.4.14",
     "postcss-load-config": "^4.0.1",
